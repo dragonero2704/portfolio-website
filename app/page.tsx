@@ -10,11 +10,11 @@ export const metadata = {
 export default function Home(props) {
   return (
     <>
-    <Header/>
+ 
     <main className={styles.main}>
       <h1>Work in progress...</h1>
     </main>
-    <Footer/>
+ 
     </>
   );
 }
