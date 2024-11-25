@@ -1,6 +1,5 @@
 "use client"
-import { MutableRefObject, useRef } from "react"
-import dynamic from "next/dynamic";
+import { MutableRefObject, useState } from "react"
 
 const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
@@ -17,15 +16,21 @@ const randomWord = (length:number)=>
     }
     return res
 }
+
+
   
-const animate = (target:string, ref:MutableRefObject<any>)=>{
-    ref.current = randomWord(target.length)
-    console.log(ref.current)
+const animate = (target:string, setter:CallableFunction)=>{
+    const frame = (timestamp)=>
+    {
+        setter(randomWord(target.length))
+        requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame)
 }
 
 export default function AnimatedText ({content})
 {
-    const genTextRef = useRef(content);
-    animate(content, genTextRef)
-    return <span>{genTextRef.current}</span>
+    const [genText, genTextSet] = useState(content);
+    animate(content, genTextSet)
+    return <span>{genText}</span>
 }
