@@ -3,4 +3,20 @@
     align-items: center;
     justify-content: left;
     padding: 1rem;
+    width: 100%;
+}
+
+.nav{
+    list-style: none;
+    display: flex;
+}
+
+.link{
+    text-transform: uppercase;
+    padding: 1rem;
+    
+}
+
+.active {
+    color: rgb(var(--secondary-color-rgb));
 }
