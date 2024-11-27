@@ -3,11 +3,18 @@ import { useEffect, useRef, useState } from "react";
 
 const CHARS = "!@#$%^&*():{};|,.<>/?";
 
-export default function ScrambleText({ children }) {
+interface ScrambleProps {
+  multiText:boolean;
+  
+}
+
+export default function ScrambleText({children}) {
   // hooks
   const intervalRef = useRef();
   const [text, setText] = useState(children);
+
   const TARGET = children as string;
+  // scramble function
   const scramble = (
     word: string,
     cycles: number = 2,
@@ -31,7 +38,8 @@ export default function ScrambleText({ children }) {
   };
   useEffect(()=>{
     scramble(TARGET)
+    return stopScramble
   }, [TARGET])
 
-  return <span>{text}</span>;
+  return <>{text}</>;
 }

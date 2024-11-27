@@ -19,25 +19,21 @@
     background: rgb(var(--foreground-rgb));
 }
 
-.footer_card{
-    display: block;
+.card{
+    /* display: block; */
     position: relative;
-}
-
-.logo_container{
-    position: relative !important;
-    display: inline-block;
-    height: 1.5rem;
-    width: 60px;
 }
 
 .logo{
     position: relative !important;
+    display: inline-block;
+    height: 1rem;
+    width: 100%;
 }
 
 @media (prefers-color-scheme: dark)
 {
-    .logo{
+    .nextjslogo{
         filter: invert(1);
     }
 }

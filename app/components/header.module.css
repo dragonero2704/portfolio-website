@@ -1,4 +1,4 @@
-.header{
+.header {
     display: flex;
     align-items: center;
     justify-content: left;
@@ -6,17 +6,50 @@
     width: 100%;
 }
 
-.nav{
+.nav {
     list-style: none;
     display: flex;
+    position: relative;
 }
 
-.link{
-    text-transform: uppercase;
-    padding: 1rem;
-    
+.link {
+    position: relative;
+    text-transform: capitalize;
+    padding: .5rem;
+    margin: .5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
+
+.link::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 2px;
+    width: 0%;
+    background-color: rgb(var(--secondary-color-rgb));
+    transition: width .3s;
+}
+
+@media (pointer:fine) and (hover:hover) {
+    .link:hover::before,
+    .link.active::before {
+        width: 100%;
+        transition: width .3s;
+    }
+}
+
+
 
 .active {
     color: rgb(var(--secondary-color-rgb));
+}
+
+@media (prefers-reduced-motion) {
+    .link:hover::before {
+        width: 0%;
+    }
 }
