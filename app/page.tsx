@@ -19,9 +19,9 @@ export default function Page({ params }) {
       <div className={styles.card}>
         <h1>
           <Cycle>
-            {text.map((t, id) => (
-              <ScrambleText key={id}>{t}</ScrambleText>
-            ))}
+            {text.map((t, id) => {
+              return <ScrambleText key={id}>{t}</ScrambleText>;
+            })}
           </Cycle>
         </h1>
         <h1 className="highlight">Roberto</h1>
