@@ -32,7 +32,7 @@
   text-align: right;
   /* margin-right: auto; */
   height: 100%;
-  padding: 40px;
+  padding: 0 40px;
   /* padding-right: 40px; */
   border-right: 4px solid rgb(var(--secondary-color-rgb));
 }
