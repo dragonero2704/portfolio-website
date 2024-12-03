@@ -1,28 +1,35 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-const CHARS = "!@#$%^&*():{};|,.<>/?";
+// const CHARS = "!@#$%^&*():{};|,.<>/?";
+const CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*():{};|,.<>/?";
 
-interface ScrambleProps {
-  multiText: boolean;
+interface ScrambleArgs {
+  children: Array<any> | string;
+  interval?: number;
+  cycles?: number;
 }
 
-export default function ScrambleText({ children }) {
+export default function ScrambleText({
+  children,
+  interval = 30,
+  cycles = 2,
+}: ScrambleArgs) {
   // hooks
-  console.log(children);
   const intervalRef = useRef<NodeJS.Timeout>();
   const [text, setText] = useState(children);
 
+  // convert children prop to string
+  children = Array.isArray(children)
+    ? children.join(" ")
+    : (children as string);
   const TARGET = children as string;
-  // scramble function
+
+  // useEffect
   useEffect(() => {
-    const scramble = (
-      word: string,
-      cycles: number = 2,
-      scrambleInterval: number = 30
-    ) => {
+    const scramble = (word: string, cycles: number, interval: number) => {
       let counter = 0;
-      intervalRef.current = setInterval(() => {
+      return setInterval(() => {
         // scramble logic
         let scrambledText = TARGET.split("")
           .map((char, index) => {
@@ -33,16 +40,12 @@ export default function ScrambleText({ children }) {
           .join("");
         counter++;
         setText(scrambledText);
-      }, scrambleInterval);
+      }, interval);
     };
 
-    const stopScramble = () => {
-      clearInterval(intervalRef.current as NodeJS.Timeout);
-    };
-
-    scramble(TARGET);
-    return stopScramble;
-  }, [TARGET, intervalRef]);
+    intervalRef.current = scramble(TARGET, cycles, interval);
+    return clearInterval.bind(null, intervalRef.current as NodeJS.Timeout);
+  }, [TARGET, intervalRef, interval, cycles]);
 
   return <>{text}</>;
 }

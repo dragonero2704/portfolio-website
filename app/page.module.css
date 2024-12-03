@@ -66,15 +66,18 @@
   .card {
     width: 100%;
     text-align: left;
-    font-size: 40px;
+    font-size: 30px;
     border-top: 4px solid rgb(var(--secondary-color-rgb));
     border-right: 0;
+    padding: 40px 0;
   }
 
   .card h1 {
     width: fit-content;
     margin: auto;
-    text-overflow: ellipsis;
+    overflow: hidden;
+    text-overflow: clip;
+   
   }
 }
 

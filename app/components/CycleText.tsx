@@ -18,11 +18,8 @@ export default function Cycle({ children, cycleTime = 5000 }: CycleArgs) {
         setSelected(children[count]);
       }, cycleTime);
     };
-    const stopCycle = (intervalId) => {
-      clearInterval(intervalId as NodeJS.Timeout);
-    };
     intervalRef.current = cycle(children);
-    return stopCycle.bind(null, intervalRef.current);
+    return clearInterval.bind(null, intervalRef.current as NodeJS.Timeout);
   }, [children, intervalRef]);
   return <>{selected}</>;
 }
