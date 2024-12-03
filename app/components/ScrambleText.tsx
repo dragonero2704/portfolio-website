@@ -10,7 +10,8 @@ interface ScrambleProps {
 
 export default function ScrambleText({children}) {
   // hooks
-  const intervalRef = useRef();
+  console.log(children)
+  const intervalRef =  useRef<NodeJS.Timeout>();
   const [text, setText] = useState(children);
 
   const TARGET = children as string;
@@ -21,7 +22,7 @@ export default function ScrambleText({children}) {
     scrambleInterval: number = 30
   ) => {
     let counter = 0;
-    setInterval(() => {
+    intervalRef.current = setInterval(() => {
       // scramble logic
       let scrambledText = TARGET.split("").map((char, index) => {
         return counter / cycles > index

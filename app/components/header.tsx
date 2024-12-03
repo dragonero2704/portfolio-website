@@ -18,6 +18,7 @@ export default function Header() {
   const paths = [
     { href: "/", name: "Home" },
     { href: "/projects", name: "Projects" },
+    {href: "/contacts", name: "Contact"}
   ];
   const curpath = usePathname();
   return (

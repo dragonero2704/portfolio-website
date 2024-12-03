@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import { Metadata } from "next";
 import Nossr from "./components/nossr";
 import ScrambleText from "./components/ScrambleText";
+import Cycle from "./components/CycleText";
 
 export const metadata: Metadata = {
   title: "Rudidigital",
@@ -11,19 +12,24 @@ export const metadata: Metadata = {
 };
 
 export default function Page({ params }) {
+  const text = ["Hello, I am", "Ciao, sono"];
+
   return (
-    <main className={styles.main}>
-      
+    <section className={styles.panel}>
+      <div className={styles.card}>
         <h1>
-          <Nossr>
-            <ScrambleText>Ciao! Sono</ScrambleText>
-          </Nossr>
+          <Cycle>
+            {text.map((t) => (
+              <ScrambleText>{t}</ScrambleText>
+            ))}
+          </Cycle>
         </h1>
-        
-        <div className={styles.logo}>
-          <Image src="/rr.svg" alt="Rudidigital logo" fill />
-        </div>
-      
-    </main>
+        <h1 className="highlight">Roberto</h1>
+      </div>
+
+      <div className={[styles.logo, styles.logoimage].join(" ")}>
+        <Image src="/rr.svg" alt="Rudidigital logo" fill />
+      </div>
+    </section>
   );
 }

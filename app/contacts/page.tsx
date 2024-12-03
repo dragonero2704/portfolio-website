@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function Page(props) {
   return (
     <h1>
-      <ScrambleText>Projects</ScrambleText>
+      <ScrambleText>Contacts</ScrambleText>
     </h1>
   );
 }
