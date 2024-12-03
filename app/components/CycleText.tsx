@@ -24,6 +24,6 @@ export default function Cycle({children, cycleTime = 5000} : CycleArgs)
     useEffect(()=>{
         intervalRef.current = cycle(children)
         return stopCycle.bind(null, intervalRef.current)
-    }, [children, intervalRef])
+    }, [children, intervalRef, cycle, stopCycle])
     return <>{selected}</>
 }

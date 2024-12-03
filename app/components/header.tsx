@@ -24,8 +24,8 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
-        {paths.map((path) => (
-          <li key={path.href}>
+        {paths.map((path, id) => (
+          <li key={id}>
             <Link
               href={path.href}
               className={[

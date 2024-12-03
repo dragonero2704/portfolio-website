@@ -40,7 +40,7 @@ export default function ScrambleText({children}) {
   useEffect(()=>{
     scramble(TARGET)
     return stopScramble
-  }, [TARGET, intervalRef])
+  }, [TARGET, intervalRef, scramble, stopScramble])
 
   return <>{text}</>;
 }
