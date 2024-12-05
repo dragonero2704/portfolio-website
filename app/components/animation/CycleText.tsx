@@ -3,10 +3,10 @@ import React, { ReactNode, useEffect, useRef, useState } from "react";
 
 interface CycleArgs {
   children: Array<any>;
-  cycleTime?: number;
+  interval?: number;
 }
 
-export default function Cycle({ children, cycleTime = 5000 }: CycleArgs) {
+export default function Cycle({ children, interval = 5000 }: CycleArgs) {
   children = Array.isArray(children) ? children : [children];
   const [selected, setSelected] = useState(children[0]);
   const intervalRef = useRef<NodeJS.Timeout>();
@@ -16,10 +16,10 @@ export default function Cycle({ children, cycleTime = 5000 }: CycleArgs) {
       return setInterval(() => {
         count = (count + 1) % children.length;
         setSelected(children[count]);
-      }, cycleTime);
+      }, interval);
     };
     intervalRef.current = cycle(children);
     return clearInterval.bind(null, intervalRef.current as NodeJS.Timeout);
-  }, [children, intervalRef]);
+  }, [children, intervalRef, interval]);
   return <>{selected}</>;
 }

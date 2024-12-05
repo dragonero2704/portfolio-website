@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import styles from "./page.module.css";
-import ScrambleText from "../components/ScrambleText";
+import ScrambleText from "../components/animation/ScrambleText";
 
 export const metadata: Metadata = {
   title: "Projects",

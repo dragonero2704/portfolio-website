@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 
 // const CHARS = "!@#$%^&*():{};|,.<>/?";
-const CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*():{};|,.<>/?";
+const CHARS = "abcdefghijklmnopqrstuvwxyz!#$%^&*():{};|,.<>/?";
 
 interface ScrambleArgs {
   children: Array<any> | string;
@@ -15,15 +15,14 @@ export default function ScrambleText({
   interval = 30,
   cycles = 2,
 }: ScrambleArgs) {
+  // convert children prop to string
+  children = Array.isArray(children)
+    ? children.join("")
+    : (children as string);
+  const TARGET = children as string;
   // hooks
   const intervalRef = useRef<NodeJS.Timeout>();
   const [text, setText] = useState(children);
-
-  // convert children prop to string
-  children = Array.isArray(children)
-    ? children.join(" ")
-    : (children as string);
-  const TARGET = children as string;
 
   // useEffect
   useEffect(() => {

@@ -5,7 +5,14 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  /* padding: 0 20px; */
+  /* align-self: stretch; */
+  /* flex-grow: 5; */
+  max-height: 100vh;
+}
+
+.stretch{
+  align-self: stretch;
+  flex-grow: 10;
 }
 
 .code {
@@ -15,10 +22,6 @@
 
 .logo {
   position: relative;
-}
-
-.logoimage {
-  position: relative;
   aspect-ratio: 1;
   width: 30%;
   height: auto;
@@ -27,17 +30,13 @@
 }
 
 .card {
-  font-size: 60px;
   width: 50%;
   text-align: right;
-  /* margin-right: auto; */
   height: 100%;
-  padding: 0 40px;
-  /* padding-right: 40px; */
+  padding-right: 40px;
   border-right: 4px solid rgb(var(--secondary-color-rgb));
+  white-space: nowrap;
 }
-
-
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {}
@@ -46,19 +45,16 @@
 
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
-  .card {
-    font-size: 40px;
-  }
+  
 }
 
 /* Mobile */
 @media (max-width: 700px) {
   .panel {
     flex-direction: column-reverse;
-
   }
 
-  .logoimage {
+  .logo {
     margin: 0;
     width: 80%;
   }
@@ -66,10 +62,10 @@
   .card {
     width: 100%;
     text-align: left;
-    font-size: 30px;
     border-top: 4px solid rgb(var(--secondary-color-rgb));
     border-right: 0;
     padding: 40px 0;
+    container-type: block;
   }
 
   .card h1 {
@@ -77,7 +73,6 @@
     margin: auto;
     overflow: hidden;
     text-overflow: clip;
-   
   }
 }
 
