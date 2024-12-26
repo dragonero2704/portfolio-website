@@ -10,11 +10,9 @@
 }
 .footer::before{
     content: '';
-    width:100%;
+    width:100vw;
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
     height: 1px;
     background: rgb(var(--foreground-rgb));
 }

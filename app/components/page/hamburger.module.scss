@@ -1,0 +1,72 @@
+@use "sass:list";
+
+// Define hamburger container
+.hamburger {
+  height: 2rem;
+  aspect-ratio: 1;
+  width: auto;
+  text-align: center;
+  position: relative;
+  justify-self: end;
+  transition: all 0.2s ease-in-out;
+}
+// Define general hamburger span rules
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 50%;
+  background-color: rgb(var(--foreground-rgb));
+  position: absolute;
+  transition: inherit;
+  transform-origin: center center;
+}
+
+// Define general clicked hamburger span rules
+.hamburger.clicked span {
+  background-color: rgb(var(--secondary-color-rgb));
+  top: 50% !important;
+  bottom: 0;
+}
+
+// variables for individual rules
+$angles: -1, 1, 1, -1;
+$origins-y: center, center, center, center;
+$origins-x: right, left, right, left;
+
+// Individual rules for each span element
+@for $i from 1 through 4 {
+  .hamburger span:nth-child(#{$i}) {
+    // top
+    @if $i <= 2 {
+      top: 25%;
+    } @else {
+      top: 75%;
+    }
+    // center-y
+    transform: translateY(-50%);
+    // right-left alignment
+    // border radius
+    @if $i%2==0 {
+      border-radius: 0 2px 2px 0;
+      right: 0;
+    } @else {
+      border-radius: 2px 0 0 2px;
+      left: 0;
+    }
+    // transform origin
+    transform-origin: list.nth($origins-y, $i) list.nth($origins-x, $i);
+  }
+
+  // click rules
+  .hamburger.clicked span:nth-child(#{$i}) {
+    transform: rotate(#{(list.nth($angles, $i)) * 45}deg);
+  }
+}
+
+// trigger responsive layout
+@media (min-width: 701px)
+{
+  .hamburger{
+    display: none;
+  }
+}
