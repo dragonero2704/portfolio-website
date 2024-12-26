@@ -19,7 +19,7 @@ interface HamburgerArgs {
  */
 export default function Hamburger({ callable, customCss }: HamburgerArgs) {
   const click = (event: MouseEvent) => {
-    const ham = event.target
+    const ham = event.target as HTMLElement
     if (ham) ham.classList.toggle(customCss ? customCss.clicked : defaultCss.clicked);
   };
   return (
