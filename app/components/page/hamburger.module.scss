@@ -19,6 +19,7 @@
   position: absolute;
   transition: inherit;
   transform-origin: center center;
+  z-index: -10;
 }
 
 // Define general clicked hamburger span rules
