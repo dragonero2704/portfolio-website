@@ -26,6 +26,7 @@ export default function Hamburger({ callable, customCss }: HamburgerArgs) {
     <div
       className={customCss ? customCss.hamburger : defaultCss.hamburger}
       onClick={(event) => {
+        event.stopPropagation()
         // first handle click event on the hamburger
         click(event);
         // then handle callable function supplied by parameter
