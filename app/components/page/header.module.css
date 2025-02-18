@@ -5,6 +5,7 @@
     padding: 1rem;
     width: 100%;
     position: sticky;
+    z-index: 100;
 }
 
 .nav {
@@ -65,21 +66,26 @@
 /* responsive layout rules */
 @media(max-width:701px) {
     .nav-responsive{
-        transform: translateY(50%) translateX(200%) !important;
+        transform: translateY(00%) translateX(200%) !important;
     }
 
     .nav{
         position: absolute;
+        top:0;
         bottom: 0;
-        transform: translateY(50%) translateX(0%);
-        justify-content: space-evenly;
+        height: 100vh;
+        transform: translateX(0%);
+        justify-content: center;
         align-items: center;
+        flex-direction: column;
         right: 0;
         left: 0;
+        background-color: rgba(0, 0, 0,.7);
+
     }
 
     .link{
         font-size: 1 rem;
-        margin: 0;
+        margin-top: 10px;
     }
 }

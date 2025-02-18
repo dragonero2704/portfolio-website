@@ -25,9 +25,7 @@ export default function Header() {
   }
   return (
     <header className={styles.header}>
-      <Hamburger callable={menuToggle.bind(null, styles["nav-responsive"])}/>
       <nav className={[styles.nav, styles["nav-responsive"]].join(" ")}>
-        
           {paths.map((path, id) => (
             <li key={id}>
               <Link
@@ -42,6 +40,8 @@ export default function Header() {
             </li>
           ))}
       </nav>
+      <Hamburger callable={menuToggle.bind(null, styles["nav-responsive"])}/>
+
     </header>
   );
 }
