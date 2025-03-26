@@ -9,16 +9,19 @@ export const metadata: Metadata = {
 };
 
 export default async function Page(...props) {
-  const repos = await ListRepos();
+  const repos = await ListRepos()
+  .catch(e=>console.error(e));
+  console.log(repos)
+  
   return (
     <>
       <h1>
         <ScrambleText>Projects</ScrambleText>
       </h1>
       <ol>
-        {repos.map((repo) => (
-          <li key={repo.id}><a className="highlight" href={repo.html_url}>{repo.name}</a>{repo.languages.toString()}</li>
-        ))}
+        {repos ? repos?.map((repo) => (
+          <li key={repo.id}><a className="highlight" href={repo.html_url}>{repo.name}</a></li>
+        )) : "Rate limited"}
       </ol>
     </>
   );
