@@ -15,11 +15,11 @@ export default async function Page(props) {
       <h1>
         <ScrambleText>Projects</ScrambleText>
       </h1>
-      <>
+      <ol>
         {repos.map((repo) => (
-          <p>{repo.name} <span>{repo.visibility}</span> <span>{repo.languages_url}</span></p>
+          <li key={repo.id}><a className="highlight" href={repo.html_url}>{repo.name}</a></li>
         ))}
-      </>
+      </ol>
     </>
   );
 }
