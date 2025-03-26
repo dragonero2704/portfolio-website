@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   // icons: "../favicon.ico",
 };
 
-export default async function Page(props) {
+export default async function Page(...props) {
   const repos = await ListRepos();
   return (
     <>
@@ -17,7 +17,7 @@ export default async function Page(props) {
       </h1>
       <ol>
         {repos.map((repo) => (
-          <li key={repo.id}><a className="highlight" href={repo.html_url}>{repo.name}</a></li>
+          <li key={repo.id}><a className="highlight" href={repo.html_url}>{repo.name}</a>{repo.languages.toString()}</li>
         ))}
       </ol>
     </>
