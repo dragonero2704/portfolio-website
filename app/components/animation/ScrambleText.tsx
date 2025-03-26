@@ -24,13 +24,15 @@ export default function ScrambleText({
   const intervalRef = useRef<NodeJS.Timeout>();
   const [text, setText] = useState(children);
 
-  // useEffect
+  // useEffect https://react.dev/reference/react/useEffect
   useEffect(() => {
     const scramble = (word: string, cycles: number, interval: number) => {
+      // initialize counter at 0
       let counter = 0;
       return setInterval(() => {
         // scramble logic
-        let scrambledText = TARGET.split("")
+        let scrambledText = TARGET
+          .split("") // splits the string so we can use map() method
           .map((char, index) => {
             return counter / cycles > index
               ? char
@@ -43,6 +45,7 @@ export default function ScrambleText({
     };
 
     intervalRef.current = scramble(TARGET, cycles, interval);
+    // returns the function to clear the interval
     return clearInterval.bind(null, intervalRef.current as NodeJS.Timeout);
   }, [TARGET, intervalRef, interval, cycles]);
 

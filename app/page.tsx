@@ -1,19 +1,17 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Metadata } from "next";
-import Nossr from "./components/nossr";
 import ScrambleText from "./components/animation/ScrambleText";
 import Cycle from "./components/animation/CycleText";
-
+import octokit from "./components/github";
 export const metadata: Metadata = {
   title: "Rudidigital",
   description: "Homepage",
   icons: "favicon.ico",
 };
 
-export default function Page({ params }) {
+export default async function Page({ params }) {
   const text = ["Hello, I am", "Ciao, sono"];
-
   return (
     <>
       <section className={[styles.panel, styles.stretch].join(" ")}>
@@ -33,7 +31,7 @@ export default function Page({ params }) {
         </div>
       </section>
       <section className={styles.panel}>
-
+              
       </section>
     </>
   );

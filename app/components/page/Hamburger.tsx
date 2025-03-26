@@ -14,7 +14,10 @@ interface HamburgerArgs {
 /**
  * 
  * @param callable
- * @param customCss
+ * @param customCss 
+ * Custom css is an object that must have defined the following css classes
+ * - .hamburger 
+ * - .clicked gets added at a click event to handle css animation
  * @returns 
  */
 export default function Hamburger({ callable, customCss }: HamburgerArgs) {

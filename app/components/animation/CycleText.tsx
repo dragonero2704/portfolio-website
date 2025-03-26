@@ -1,8 +1,8 @@
 "use client";
-import React, { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
 interface CycleArgs {
-  children: Array<any>;
+  children: Array<ReactNode>;
   interval?: number;
 }
 

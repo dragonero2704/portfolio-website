@@ -18,30 +18,27 @@ export default function Header() {
     { href: "/contacts", name: "Contacts" },
   ] as Array<Path>;
   const curpath = usePathname();
-  const menuToggle = (targetClass)=>{
-    const nav = document.querySelector("nav")
-    nav.classList.toggle(targetClass)
-    console.log(`Toggled class ${targetClass} on ${nav.tagName}`)
-  }
+  const menuToggle = (targetClass) => {
+    const nav = document.querySelector("nav");
+    nav.classList.toggle(targetClass);
+    console.log(`Toggled class ${targetClass} on ${nav.tagName}`);
+  };
   return (
     <header className={styles.header}>
       <nav className={[styles.nav, styles["nav-responsive"]].join(" ")}>
-          {paths.map((path, id) => (
-            <li key={id}>
-              <Link
-                href={path.href}
-                className={[
-                  styles.link,
-                  curpath === path.href ? styles.active : "",
-                ].join(" ")}
-              >
-                {path.name}
-              </Link>
-            </li>
-          ))}
+        {paths.map((path, id) => (
+          <li
+            key={id}
+            className={[
+              styles.link,
+              curpath === path.href ? styles.active : "",
+            ].join(" ")}
+          >
+            <Link href={path.href}>{path.name}</Link>
+          </li>
+        ))}
       </nav>
-      <Hamburger callable={menuToggle.bind(null, styles["nav-responsive"])}/>
-
+      <Hamburger callable={menuToggle.bind(null, styles["nav-responsive"])} />
     </header>
   );
 }
