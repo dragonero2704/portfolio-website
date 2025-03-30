@@ -12,7 +12,6 @@ export default async function Page(...props) {
   const repos = await ListRepos()
   .catch(e=>console.error(e));
   console.log(repos)
-  
   return (
     <>
       <h1>
@@ -20,7 +19,7 @@ export default async function Page(...props) {
       </h1>
       <ol>
         {repos ? repos?.map((repo) => (
-          <li key={repo.id}><a className="highlight" href={repo.html_url}>{repo.name}</a></li>
+          <li key={repo.id}><a className="highlight" href={repo.html_url}>{repo.name}</a><span>{}</span></li>
         )) : "Rate limited"}
       </ol>
     </>
