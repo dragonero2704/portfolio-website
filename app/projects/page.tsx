@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import styles from "./page.module.css";
 import ScrambleText from "../../components/animation/ScrambleText";
-import {GetRepos} from "../../components/github/ListRepos";
+import {GetRepos} from "../../components/github/getRepos";
 
 export const metadata: Metadata = {
   title: "Projects",
