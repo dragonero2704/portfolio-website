@@ -7,7 +7,7 @@ export const octokit = new Octokit({
 });
 
 /**
- * 
+ *
  * @param route The octokit route to use
  * @param parameters The parameters of the octokit route
  * @returns response
@@ -33,18 +33,18 @@ export const request = async (route: string, parameters: Object) => {
   }
 };
 
-const REVALIDATE_INTERVAL = 600
+const REVALIDATE_INTERVAL = 600;
 /**
- * 
+ *
  */
 export const requestCached = unstable_cache(
-    async (route,parameters) =>{
-        console.log("Revalidating cache")
-        return request(route,parameters)
-    },
-    null,
-    {
-        revalidate: REVALIDATE_INTERVAL
-    }
-
-)
+  async (route, parameters) => {
+    console.log("Revalidating cahe");
+    return request(route, parameters);
+  },
+  null,
+  {
+    revalidate: REVALIDATE_INTERVAL,
+    tags: ["server"],
+  }
+);

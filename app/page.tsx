@@ -1,9 +1,9 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Metadata } from "next";
-import Nossr from "../components/nossr";
-import ScrambleText from "../components/animation/ScrambleText";
-import Cycle from "../components/animation/CycleText";
+import Nossr from "../src/nossr";
+import ScrambleText from "../src/animation/ScrambleText";
+import Cycle from "../src/animation/CycleText";
 
 export const metadata: Metadata = {
   title: "Rudidigital",

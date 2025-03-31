@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import styles from "./page.module.css";
-import ScrambleText from "../../components/animation/ScrambleText";
-import {GetRepos} from "../../components/github/getRepos";
+import ScrambleText from "../../src/animation/ScrambleText";
+import {GetRepos} from "../../src/github/getRepos";
+import RepoPanel from "../../src/github/RepoPanel";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -11,16 +12,14 @@ export const metadata: Metadata = {
 export default async function Page(...props) {
   const repos = await GetRepos({cached:false})
   .catch(e=>console.error(e));
+  if(!repos) return (<>No data</>)
   return (
     <>
       <h1>
         <ScrambleText>Projects</ScrambleText>
       </h1>
-      <ol>
-        {repos ? repos?.map((repo) => (
-          <li key={repo.id}><a className="highlight" href={repo.html_url}>{repo.name}</a><span>{}</span></li>
-        )) : "Rate limited"}
-      </ol>
+      
+        {repos.map((repo)=>(<RepoPanel repo={repo} key={repo.id} />))}
     </>
   );
 }
