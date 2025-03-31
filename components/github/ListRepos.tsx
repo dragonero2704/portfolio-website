@@ -8,16 +8,18 @@ export async function GetRepos({ cached = false }: { cached: boolean }) {
     // get user public repos list
     // fetch(url)
     // const url = "https://api.github.com/users/dragonero2704/repos" as string;
+
     const { data } = cached
       ? await requestCached("GET /users/{username}/repos", {
           username: "dragonero2704",
-        })
+        }).catch(reject)
       : await request("GET /users/{username}/repos", {
           username: "dragonero2704",
-        });
-    // .catch((e) => reject(e));
-    console.log(data);
+        }).catch(reject);
     resolve(data);
+
+    // .catch((e) => reject(e));
+
     // repos manipulation
   });
 }
