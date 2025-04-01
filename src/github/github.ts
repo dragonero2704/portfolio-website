@@ -1,10 +1,12 @@
 import { Octokit } from "octokit";
+import {Octokit as OctokitClass} from "@octokit/core/dist-types"
 import { unstable_cache } from "next/cache";
+import { RequestParameters } from "@octokit/core/dist-types/types";
 // authenticated github API client
 // documentation: https://github.com/octokit/octokit.js
 export const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
-});
+}) as OctokitClass;
 
 /**
  *
@@ -12,7 +14,7 @@ export const octokit = new Octokit({
  * @param parameters The parameters of the octokit route
  * @returns response
  */
-const retryRequest = async (route: string, parameters: Object) => {
+const retryRequest = async (route: string, parameters: RequestParameters) => {
   try {
     const response = await octokit.request(route, parameters);
     return response;
@@ -49,7 +51,7 @@ const requestCached = unstable_cache(
   }
 );
 
-export default async function request(route:string, parameters: Object, cached:boolean = false){
+export default async function request(route:string, parameters: RequestParameters, cached:boolean = false){
   if(cached) return requestCached(route,parameters)
     else return retryRequest(route, parameters)
 }

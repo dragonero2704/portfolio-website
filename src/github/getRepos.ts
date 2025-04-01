@@ -33,10 +33,10 @@ export async function GetRepos({
           })
         )
       )
-    ).map((el) => el.value);
-
+    ).map((el) =>  el.status == "fulfilled" ? el.value : el.reason);
+    console.log(languages)
     languages.forEach((language, i) => {
-      if(!Reflect.defineProperty(repos[i], "languages", {value:language})) console.warn("Porcodio")
+      if(!Reflect.defineProperty(repos[i], "languages", {"value":language})) console.warn("Porcodio")
     });
     console.log(repos);
     resolve(repos as Repository[]);
