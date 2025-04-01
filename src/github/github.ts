@@ -12,7 +12,7 @@ export const octokit = new Octokit({
  * @param parameters The parameters of the octokit route
  * @returns response
  */
-export const request = async (route: string, parameters: Object) => {
+const retryRequest = async (route: string, parameters: Object) => {
   try {
     const response = await octokit.request(route, parameters);
     return response;
@@ -28,7 +28,7 @@ export const request = async (route: string, parameters: Object) => {
       const now = Math.floor(Date.now() / 1000);
       const toWait = resetTime - now;
       console.warn(`Rate limit exceeded. Retrying in ${toWait} seconds`);
-      setTimeout(request, toWait, route, parameters);
+      setTimeout(retryRequest, toWait, route, parameters);
     }
   }
 };
@@ -37,10 +37,10 @@ const REVALIDATE_INTERVAL = 600;
 /**
  *
  */
-export const requestCached = unstable_cache(
+const requestCached = unstable_cache(
   async (route, parameters) => {
     console.log("Revalidating cahe");
-    return request(route, parameters);
+    return retryRequest(route, parameters);
   },
   null,
   {
@@ -48,3 +48,8 @@ export const requestCached = unstable_cache(
     tags: ["server"],
   }
 );
+
+export default async function request(route:string, parameters: Object, cached:boolean = false){
+  if(cached) return requestCached(route,parameters)
+    else return retryRequest(route, parameters)
+}

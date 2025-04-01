@@ -6,7 +6,7 @@ export declare function cached(
 export declare function cachedFetch(
     route:string,
     options?: options
-)
+):Function<Promise<unknown>>
 
 interface options {
     revalidate:number
