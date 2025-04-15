@@ -1,12 +1,13 @@
 import { Octokit } from "octokit";
 import {Octokit as OctokitClass} from "@octokit/core/dist-types"
 import { unstable_cache } from "next/cache";
-import { RequestParameters } from "@octokit/core/dist-types/types";
+import {RequestParameters} from "@octokit/core/dist-types/types";
+
 // authenticated github API client
 // documentation: https://github.com/octokit/octokit.js
-export const octokit = new Octokit({
+export const octokit : OctokitClass = new Octokit({
   auth: process.env.GITHUB_TOKEN,
-}) as OctokitClass;
+})
 
 /**
  *

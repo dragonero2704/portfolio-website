@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import ScrambleText from "../../src/animation/ScrambleText";
 import {GetRepos} from "../../src/github/getRepos";
 import RepoPanel from "../../src/github/RepoPanel";
@@ -18,8 +18,12 @@ export default async function Page(...props) {
       <h1>
         <ScrambleText>Projects</ScrambleText>
       </h1>
+      <p>Dai un'occhiata!</p>
+      <div className={styles.repoContainer}>
+      {repos.map((repo)=>(<RepoPanel repo={repo} key={repo.id} />))}
+
+      </div>
       
-        {repos.map((repo)=>(<RepoPanel repo={repo} key={repo.id} />))}
     </>
   );
 }

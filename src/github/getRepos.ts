@@ -4,6 +4,10 @@ import request from "./github";
 import { cachedFetch } from "../../request";
 import "./errors";
 
+interface OctokitResponse {
+
+}
+
 export async function GetRepos({
   cached = false,
 }: {
@@ -11,13 +15,15 @@ export async function GetRepos({
 }): Promise<Array<Repository>> {
   return new Promise<Array<Repository>>(async (resolve, reject) => {
     // get user public repos list
-    const { data }: { data: Repository[] } = await request(
+    const response:any= await request(
       "GET /users/{username}/repos",
       {
         username: "dragonero2704",
       },
       cached
     ).catch(reject);
+    if(!response) reject("No response")
+    const {data} = response
     // data manipulation
     // 1. Fetch language map
     // https://api.github.com/repos/{owner}/{repo}/languages
@@ -33,10 +39,9 @@ export async function GetRepos({
           })
         )
       )
-    ).map((el) =>  el.status == "fulfilled" ? el.value : el.reason);
-    console.log(languages)
+    ).map((el) =>  el.status == "fulfilled" ? el.value?.data : el.reason);
     languages.forEach((language, i) => {
-      if(!Reflect.defineProperty(repos[i], "languages", {"value":language})) console.warn("Porcodio")
+      if(!Object.defineProperty(repos[i], "languages", {"value":language, enumerable:true,writable:false})) console.warn("Porcodio")
     });
     console.log(repos);
     resolve(repos as Repository[]);
