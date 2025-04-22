@@ -9,7 +9,9 @@
   position: relative;
   justify-self: end;
   transition: all 0.2s ease-in-out;
+  z-index: 100;
 }
+
 // Define general hamburger span rules
 .hamburger span {
   display: block;

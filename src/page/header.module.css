@@ -5,7 +5,7 @@
     padding: 1rem;
     width: 100%;
     position: sticky;
-    z-index: 100;
+    z-index: 10;
 }
 
 .nav {
@@ -45,7 +45,6 @@
 }
 
 @media (pointer:fine) and (hover:hover) {
-
     .link:hover::before,
     .link.active::before {
         width: 100%;

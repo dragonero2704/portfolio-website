@@ -1,8 +1,22 @@
-.repoContainer{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    justify-content:space-between;
-    margin: auto;
-    gap:15px
+.repoContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  gap: 15px;
+}
+
+// tablets
+@media (min-width: 701px) and (max-width: 1120px) {
+  .repoContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// smartphones
+@media (max-width: 701px) {
+  .repoContainer {
+    grid-template-columns: 1fr;
+  }
 }
