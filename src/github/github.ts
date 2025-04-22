@@ -42,7 +42,7 @@ const REVALIDATE_INTERVAL = 600;
  */
 const requestCached = unstable_cache(
   async (route, parameters) => {
-    console.log("Revalidating cahe");
+    console.info("Revalidating cahe");
     return retryRequest(route, parameters);
   },
   null,

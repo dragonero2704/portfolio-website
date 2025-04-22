@@ -4,10 +4,6 @@ import request from "./github";
 import { cachedFetch } from "../../request";
 import "./errors";
 
-interface OctokitResponse {
-
-}
-
 export async function GetRepos({
   cached = false,
 }: {
@@ -27,7 +23,7 @@ export async function GetRepos({
     // data manipulation
     // 1. Fetch language map
     // https://api.github.com/repos/{owner}/{repo}/languages
-    let repos = data;
+    let repos = data as GithubRepository[];
     if (!repos) reject("No repos");
 
     const languages = (
@@ -41,9 +37,8 @@ export async function GetRepos({
       )
     ).map((el) =>  el.status == "fulfilled" ? el.value?.data : el.reason);
     languages.forEach((language, i) => {
-      if(!Object.defineProperty(repos[i], "languages", {"value":language, enumerable:true,writable:false})) console.warn("Porcodio")
+      if(!Object.defineProperty(repos[i], "languages", {"value":language, enumerable:true,writable:false})) console.warn(`Failed to retrieve language map for repository "${repos[i].full_name}"`)
     });
-    console.log(repos);
     resolve(repos as Repository[]);
   });
 }

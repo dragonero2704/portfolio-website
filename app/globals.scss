@@ -75,6 +75,14 @@ a {
   color: rgb(var(--secondary-color-rgb));
 }
 
+$transforms: "uppercase", "capitalize", "lowercase";
+
+@each $t in $transforms{
+  .#{$t}{
+    text-transform: #{$t};
+  }
+}
+
 @for $i from 2 through 10 {
   .font-size-#{$i}-rem {
     font-size: #{$i}rem;

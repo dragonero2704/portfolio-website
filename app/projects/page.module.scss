@@ -1,8 +1,8 @@
 .repoContainer{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
-    justify-content:center;
+    justify-content:space-between;
     margin: auto;
-    gap:5px
+    gap:15px
 }

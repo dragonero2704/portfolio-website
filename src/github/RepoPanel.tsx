@@ -4,7 +4,6 @@ import Image from "next/image";
 export default function RepoPanel({ repo }: { repo: Repository }) {
   //panel definition
   if (!repo) return null;
-  console.log(repo);
   return (
     <div className={styles.repoCard}>
       <h2 className={styles.repoTitle}>
@@ -18,11 +17,12 @@ export default function RepoPanel({ repo }: { repo: Repository }) {
         className={styles.repoIcon}
       />
       <p className={styles.repoDescription}>{repo.description}</p>
-      <p className={styles.repoLanguage}>
+      <p className={styles.repoLanguages}>
         {Object.entries(repo.languages)
-          .sort((a, b) => a[1] - b[1])
-          .map((a) => a[0])
-          .join(", ")}
+          .sort((a, b) => b[1] - a[1])
+          .map((a,i) => <span key={i} className={styles.repoLanguage}>{a[0]}</span>)
+          .slice(0,3) // limit to the most 3 used programming languages
+          }
       </p>
 
       
