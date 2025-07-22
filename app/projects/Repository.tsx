@@ -1,7 +1,9 @@
+"use client"
 import styles from "./repopanel.module.scss";
-import { Repository } from "./interfaces";
+import { GithubRepository, MyRepository } from "../../src/github/interfaces";
 import Image from "next/image";
-export default function RepoPanel({ repo }: { repo: Repository }) {
+
+export default function Repository({ repo }: { repo: GithubRepository }) {
   //panel definition
   if (!repo) return null;
   return (
@@ -17,13 +19,14 @@ export default function RepoPanel({ repo }: { repo: Repository }) {
         className={styles.repoIcon}
       />
       <p className={styles.repoDescription}>{repo.description}</p>
-      <p className={styles.repoLanguages}>
+
+      {/* <p className={styles.repoLanguages}>
         {Object.entries(repo.languages)
           .sort((a, b) => b[1] - a[1])
           .map((a,i) => <span key={i} className={styles.repoLanguage}>{a[0]}</span>)
           .slice(0,3) // limit to the most 3 used programming languages
           }
-      </p>
+      </p> */}
 
       
     </div>

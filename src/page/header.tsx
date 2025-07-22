@@ -15,7 +15,7 @@ export default function Header() {
   const paths = [
     { href: "/", name: "Home" },
     { href: "/projects", name: "Projects" },
-    { href: "/contacts", name: "Contacts" },
+    { href: "/#contacts", name: "Contacts" },
   ] as Array<Path>;
   const curpath = usePathname();
   const menuToggle = (targetClass) => {

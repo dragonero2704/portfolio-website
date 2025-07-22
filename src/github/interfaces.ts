@@ -108,6 +108,6 @@ export interface GithubRepository {
 }
 
 // interface for manipulated GithubRepository
-export interface Repository extends GithubRepository {
+export interface MyRepository extends GithubRepository {
     languages: Object
 }

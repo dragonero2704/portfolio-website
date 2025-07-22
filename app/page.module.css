@@ -29,7 +29,7 @@
   margin-left: 40px;
 }
 
-.card {
+.hero {
   width: 50%;
   text-align: right;
   height: 100%;
@@ -59,7 +59,7 @@
     width: 80%;
   }
 
-  .card {
+  .hero {
     width: 100%;
     text-align: left;
     border-top: 4px solid rgb(var(--secondary-color-rgb));
@@ -68,7 +68,7 @@
     container-type: block;
   }
 
-  .card h1 {
+  .hero h1 {
     width: fit-content;
     margin: auto;
     overflow: hidden;

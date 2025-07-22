@@ -16,7 +16,7 @@ export default async function Page({ params }) {
   return (
     <>
       <section className={[styles.panel, styles.stretch].join(" ")}>
-        <div className={styles.card}>
+        <div className={styles.hero}>
           <h1 className="font-size-5-rem">
             <Cycle>
               {text.map((t, id) => {
@@ -30,9 +30,11 @@ export default async function Page({ params }) {
         <div className={styles.logo}>
           <Image src="/rr.svg" alt="Rudidigital logo" fill />
         </div>
+
+
       </section>
-      <section className={styles.panel}>
-              
+      <section id="contacts">
+        
       </section>
     </>
   );

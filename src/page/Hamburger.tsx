@@ -1,6 +1,7 @@
 "use client";
+import { useRouter } from "next/navigation";
 import defaultCss from "./hamburger.module.scss";
-import { MouseEvent } from "react";
+import { MouseEvent, useState } from "react";
 
 interface HamburgerArgs {
   callable?: Function;
@@ -21,21 +22,19 @@ interface HamburgerArgs {
  * @returns 
  */
 export default function Hamburger({ callable, customCss }: HamburgerArgs) {
+  const [isOpen, setOpen] = useState(false)
+  
   const click = (event: MouseEvent) => {
-    const ham = event.currentTarget as HTMLElement
+    const ham = document.querySelector(customCss ? `.${customCss.hamburger}` : `.${defaultCss.hamburger}`);
     if (ham) ham.classList.toggle(customCss ? customCss.clicked : defaultCss.clicked);
+    if (callable) callable.call(null)
+      setOpen(!isOpen)
   };
 
   return (
     <div
       className={customCss ? customCss.hamburger : defaultCss.hamburger}
-      onClick={(event) => {
-        event.stopPropagation()
-        // first handle click event on the hamburger
-        click(event);
-        // then handle callable function supplied by parameter
-        if (callable) callable.call(null)
-      }}
+      onClick={(event)=>{click(event)}}
     >
       <span></span>
       <span></span>
