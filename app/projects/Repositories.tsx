@@ -25,6 +25,6 @@ export default function Repositories({ repositories }) {
     repos
     .filter(repo=>repo.description)
     .filter(topicsFilter)
-    .map(repo=><Repository repo={repo}/>)
+    .map(repo=><Repository key={repo.id} repo={repo}/>)
   }</div>;
 }
