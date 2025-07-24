@@ -1,15 +1,14 @@
 import { Inter } from "next/font/google";
-import Footer from "../src/page/footer";
-import Header from "../src/page/header";
-import "./globals.scss";
-import React from "react";
+import Footer from "../ui/page/footer";
+import Header from "../ui/page/header";
+import "./globals.css";
+import React, { Suspense } from "react";
+import LoadingSkeleton from "../ui/LoadingSkeleton";
 
-const inter = Inter({ subsets: ["latin"] });
-
-// export const metadata = {
-//   title: "Rudidigital",
-//   description: "Homepage",
-// };
+export const metadata = {
+  title: "Rudidigital",
+  description: "Homepage",
+};
 
 export default function RootLayout({
   children,
@@ -18,11 +17,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <div className="root">
-          <Header />
-          <main className="main">{children}</main>
-          <Footer />
+          {/* <Header /> */}
+          <Suspense fallback={<LoadingSkeleton />}>
+            <main className="main">{children}</main>
+          </Suspense>
+            <h1 className="text-4xl mb-10">Work in progress...</h1>
+
+          {/* <Footer /> */}
         </div>
       </body>
     </html>

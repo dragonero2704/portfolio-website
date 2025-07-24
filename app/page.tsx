@@ -1,9 +1,8 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Metadata } from "next";
-import Nossr from "../src/nossr";
-import ScrambleText from "../src/animation/ScrambleText";
-import Cycle from "../src/animation/CycleText";
+import ScrambleText from "../ui/animation/ScrambleText";
+import Cycle from "../ui/animation/CycleText";
 
 export const metadata: Metadata = {
   title: "Rudidigital",
@@ -17,25 +16,21 @@ export default async function Page({ params }) {
     <>
       <section className={[styles.panel, styles.stretch].join(" ")}>
         <div className={styles.hero}>
-          <h1 className="font-size-5-rem">
+          <h1 className="text-7xl">
             <Cycle>
               {text.map((t, id) => {
                 return <ScrambleText key={id}>{t}</ScrambleText>;
               })}
             </Cycle>
           </h1>
-          <h1 className="highlight font-size-5-rem">Roberto</h1>
+          <h1 className="text-7xl font-semibold text-highlight-800">Roberto</h1>
         </div>
 
         <div className={styles.logo}>
           <Image src="/rr.svg" alt="Rudidigital logo" fill />
         </div>
-
-
       </section>
-      <section id="contacts">
-        
-      </section>
+      <br/>
     </>
   );
 }

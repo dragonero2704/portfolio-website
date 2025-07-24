@@ -107,6 +107,7 @@ export interface GithubRepository {
     default_branch: string
 }
 
+// deprecated
 // interface for manipulated GithubRepository
 export interface MyRepository extends GithubRepository {
     languages: Object

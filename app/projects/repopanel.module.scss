@@ -37,7 +37,6 @@
 
 .repoDescription {
     font-size: 14px;
-    
     grid-row: 2;
     grid-column: 1/4;
 }
@@ -58,7 +57,7 @@
     font-size: 14px;
     justify-self: right;
     align-self: center;
-    color: #57606a;
+    color: oklch(48.486% 0.01967 251.084);
 }
 
 .repoLanguage {

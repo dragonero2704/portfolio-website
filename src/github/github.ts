@@ -1,13 +1,13 @@
 import { Octokit } from "octokit";
-import {Octokit as OctokitClass} from "@octokit/core/dist-types"
+import { Octokit as OctokitClass } from "@octokit/core/dist-types";
 import { unstable_cache } from "next/cache";
-import {RequestParameters} from "@octokit/core/dist-types/types";
+import { RequestParameters } from "@octokit/core/dist-types/types";
 
 // authenticated github API client
 // documentation: https://github.com/octokit/octokit.js
-export const octokit : OctokitClass = new Octokit({
+export const octokit: OctokitClass = new Octokit({
   auth: process.env.GITHUB_TOKEN,
-})
+});
 
 /**
  *
@@ -36,23 +36,9 @@ const retryRequest = async (route: string, parameters: RequestParameters) => {
   }
 };
 
-const REVALIDATE_INTERVAL = 600;
-/**
- *
- */
-const requestCached = unstable_cache(
-  async (route, parameters) => {
-    console.info("Revalidating cahe");
-    return retryRequest(route, parameters);
-  },
-  null,
-  {
-    revalidate: REVALIDATE_INTERVAL,
-    tags: ["server"],
-  }
-);
-
-export default async function request(route:string, parameters: RequestParameters, cached:boolean = false){
-  if(cached) return requestCached(route,parameters)
-    else return retryRequest(route, parameters)
+export default async function request(
+  route: string,
+  parameters: RequestParameters
+) {
+  return retryRequest(route, parameters);
 }

@@ -1,16 +1,17 @@
-.footer{
+.footer {
     display: flex;
     position: relative;
     align-items: center;
     justify-content: center;
-    height: fit-content;
+    height: max-content;
     width: 100%;
     padding: 1rem;
-    /* margin-top: auto; */
+    margin-top: 10px;
 }
-.footer::before{
+
+.footer::before {
     content: '';
-    width:100vw;
+    width: 100vw;
     position: absolute;
     top: 0;
     height: 1px;
@@ -18,26 +19,25 @@
     opacity: .2;
 }
 
-.card{
+.card {
     position: relative;
-    display: block; 
+    display: block;
     height: 100%;
 }
 
-.logo{
+.logo {
     /*position: relative !important;*/
     display: inline-block;
     height: 16px;
     width: 100%;
 }
 
-.nextjslogo{
+.nextjslogo {
     opacity: .6;
 }
 
-@media (prefers-color-scheme: dark)
-{
-    .nextjslogo{
+@media (prefers-color-scheme: dark) {
+    .nextjslogo {
         filter: invert(1);
     }
 }
